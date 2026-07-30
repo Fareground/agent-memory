@@ -1,0 +1,410 @@
+{
+  "_": "Golden conformance vectors for fg-agent-memory. Regenerate with spec/generate_vectors.py; every value derives from fixed seeds.",
+  "keys": {
+    "seed_a_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+    "address_a": "amp:key:FAe4sisG95oZ42w7buUn5qEE4TAnfTTFPiguZUHmhiF"
+  },
+  "record_id": {
+    "birth": {
+      "type": "fact",
+      "body": "The conformance suite runs on fixed seeds.",
+      "slots": {
+        "subject": "conformance suite",
+        "predicate": "runs on fixed seeds"
+      },
+      "provenance": {
+        "kind": "conversation",
+        "ref": "session-0001",
+        "agent": "amp:key:FAe4sisG95oZ42w7buUn5qEE4TAnfTTFPiguZUHmhiF"
+      },
+      "created_at": "2026-01-01T00:00:00.000Z"
+    },
+    "expected": "mem:a2ba09c33f5389fd45f6a2104b694d77"
+  },
+  "canonical_record": {
+    "record": {
+      "id": "mem:a2ba09c33f5389fd45f6a2104b694d77",
+      "type": "fact",
+      "body": "The conformance suite runs on fixed seeds.",
+      "slots": {
+        "subject": "conformance suite",
+        "predicate": "runs on fixed seeds"
+      },
+      "state": "active",
+      "confidence": "0.9000",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z",
+      "provenance": {
+        "kind": "conversation",
+        "ref": "session-0001",
+        "agent": "amp:key:FAe4sisG95oZ42w7buUn5qEE4TAnfTTFPiguZUHmhiF"
+      },
+      "evidence": [],
+      "supersedes": null,
+      "superseded_by": null,
+      "transition": null,
+      "state_reason": null,
+      "tags": [
+        "conformance"
+      ],
+      "flagged": false,
+      "flag_reason": null,
+      "signed_by": null,
+      "signature": ""
+    },
+    "canonical_hex": "7b22626f6479223a2254686520636f6e666f726d616e63652073756974652072756e73206f6e2066697865642073656564732e222c22636f6e666964656e6365223a22302e39303030222c22637265617465645f6174223a22323032362d30312d30315430303a30303a30302e3030305a222c2265766964656e6365223a5b5d2c22666c61675f726561736f6e223a6e756c6c2c22666c6167676564223a66616c73652c226964223a226d656d3a6132626130396333336635333839666434356636613231303462363934643737222c2270726f76656e616e6365223a7b226167656e74223a22616d703a6b65793a464165347369734739356f5a343277376275556e357145453454416e66545446506967755a55486d686946222c226b696e64223a22636f6e766572736174696f6e222c22726566223a2273657373696f6e2d30303031227d2c227369676e6174757265223a22222c227369676e65645f6279223a6e756c6c2c22736c6f7473223a7b22707265646963617465223a2272756e73206f6e206669786564207365656473222c227375626a656374223a22636f6e666f726d616e6365207375697465227d2c227374617465223a22616374697665222c2273746174655f726561736f6e223a6e756c6c2c22737570657273656465645f6279223a6e756c6c2c2273757065727365646573223a6e756c6c2c2274616773223a5b22636f6e666f726d616e6365225d2c227472616e736974696f6e223a6e756c6c2c2274797065223a2266616374222c22757064617465645f6174223a22323032362d30312d30315430303a30303a30302e3030305a227d"
+  },
+  "signing_input": [
+    {
+      "context": "record",
+      "payload": {
+        "a": 1
+      },
+      "expected_hex": "001966672d6167656e742d6d656d6f72792f76312f7265636f72647b2261223a317d"
+    },
+    {
+      "context": "memory-file",
+      "payload": {
+        "b": "two"
+      },
+      "expected_hex": "001e66672d6167656e742d6d656d6f72792f76312f6d656d6f72792d66696c657b2262223a2274776f227d"
+    }
+  ],
+  "artifacts": {
+    "signed_record": {
+      "context": "record",
+      "payload": {
+        "id": "mem:a2ba09c33f5389fd45f6a2104b694d77",
+        "type": "fact",
+        "body": "The conformance suite runs on fixed seeds.",
+        "slots": {
+          "subject": "conformance suite",
+          "predicate": "runs on fixed seeds"
+        },
+        "state": "active",
+        "confidence": "0.9000",
+        "created_at": "2026-01-01T00:00:00.000Z",
+        "updated_at": "2026-01-01T00:00:00.000Z",
+        "provenance": {
+          "kind": "conversation",
+          "ref": "session-0001",
+          "agent": "amp:key:FAe4sisG95oZ42w7buUn5qEE4TAnfTTFPiguZUHmhiF"
+        },
+        "evidence": [],
+        "supersedes": null,
+        "superseded_by": null,
+        "transition": null,
+        "state_reason": null,
+        "tags": [
+          "conformance"
+        ],
+        "flagged": false,
+        "flag_reason": null,
+        "signed_by": "amp:key:FAe4sisG95oZ42w7buUn5qEE4TAnfTTFPiguZUHmhiF"
+      },
+      "signing_input_hex": "001966672d6167656e742d6d656d6f72792f76312f7265636f72647b22626f6479223a2254686520636f6e666f726d616e63652073756974652072756e73206f6e2066697865642073656564732e222c22636f6e666964656e6365223a22302e39303030222c22637265617465645f6174223a22323032362d30312d30315430303a30303a30302e3030305a222c2265766964656e6365223a5b5d2c22666c61675f726561736f6e223a6e756c6c2c22666c6167676564223a66616c73652c226964223a226d656d3a6132626130396333336635333839666434356636613231303462363934643737222c2270726f76656e616e6365223a7b226167656e74223a22616d703a6b65793a464165347369734739356f5a343277376275556e357145453454416e66545446506967755a55486d686946222c226b696e64223a22636f6e766572736174696f6e222c22726566223a2273657373696f6e2d30303031227d2c227369676e65645f6279223a22616d703a6b65793a464165347369734739356f5a343277376275556e357145453454416e66545446506967755a55486d686946222c22736c6f7473223a7b22707265646963617465223a2272756e73206f6e206669786564207365656473222c227375626a656374223a22636f6e666f726d616e6365207375697465227d2c227374617465223a22616374697665222c2273746174655f726561736f6e223a6e756c6c2c22737570657273656465645f6279223a6e756c6c2c2273757065727365646573223a6e756c6c2c2274616773223a5b22636f6e666f726d616e6365225d2c227472616e736974696f6e223a6e756c6c2c2274797065223a2266616374222c22757064617465645f6174223a22323032362d30312d30315430303a30303a30302e3030305a227d",
+      "signature_b64": "nEnImvt3WAlQrYRh7vrIXkDFtgNqEDl8VUIcy6haPHXB/gAOdYjuPP5jnW4Ef6gxNUQAh8gj0kiqz/5cF7mcBw==",
+      "record": {
+        "id": "mem:a2ba09c33f5389fd45f6a2104b694d77",
+        "type": "fact",
+        "body": "The conformance suite runs on fixed seeds.",
+        "slots": {
+          "subject": "conformance suite",
+          "predicate": "runs on fixed seeds"
+        },
+        "state": "active",
+        "confidence": "0.9000",
+        "created_at": "2026-01-01T00:00:00.000Z",
+        "updated_at": "2026-01-01T00:00:00.000Z",
+        "provenance": {
+          "kind": "conversation",
+          "ref": "session-0001",
+          "agent": "amp:key:FAe4sisG95oZ42w7buUn5qEE4TAnfTTFPiguZUHmhiF"
+        },
+        "evidence": [],
+        "supersedes": null,
+        "superseded_by": null,
+        "transition": null,
+        "state_reason": null,
+        "tags": [
+          "conformance"
+        ],
+        "flagged": false,
+        "flag_reason": null,
+        "signed_by": "amp:key:FAe4sisG95oZ42w7buUn5qEE4TAnfTTFPiguZUHmhiF",
+        "signature": "nEnImvt3WAlQrYRh7vrIXkDFtgNqEDl8VUIcy6haPHXB/gAOdYjuPP5jnW4Ef6gxNUQAh8gj0kiqz/5cF7mcBw=="
+      }
+    },
+    "memory_file": {
+      "context": "memory-file",
+      "payload": {
+        "format": "fg-agent-memory/0.1",
+        "agent": "amp:key:FAe4sisG95oZ42w7buUn5qEE4TAnfTTFPiguZUHmhiF",
+        "created_at": "2026-01-01T00:00:00.000Z",
+        "records": [
+          {
+            "id": "mem:a2ba09c33f5389fd45f6a2104b694d77",
+            "type": "fact",
+            "body": "The conformance suite runs on fixed seeds.",
+            "slots": {
+              "subject": "conformance suite",
+              "predicate": "runs on fixed seeds"
+            },
+            "state": "active",
+            "confidence": "0.9000",
+            "created_at": "2026-01-01T00:00:00.000Z",
+            "updated_at": "2026-01-01T00:00:00.000Z",
+            "provenance": {
+              "kind": "conversation",
+              "ref": "session-0001",
+              "agent": "amp:key:FAe4sisG95oZ42w7buUn5qEE4TAnfTTFPiguZUHmhiF"
+            },
+            "evidence": [],
+            "supersedes": null,
+            "superseded_by": null,
+            "transition": null,
+            "state_reason": null,
+            "tags": [
+              "conformance"
+            ],
+            "flagged": false,
+            "flag_reason": null,
+            "signed_by": null,
+            "signature": ""
+          },
+          {
+            "id": "mem:9e3ca918de8c6a4fa86761a313a1c356",
+            "type": "episode",
+            "body": "Ran the vector generator and reviewed the diff.",
+            "slots": {},
+            "state": "active",
+            "confidence": "0.7500",
+            "created_at": "2026-01-01T00:00:00.000Z",
+            "updated_at": "2026-01-01T00:00:00.000Z",
+            "provenance": {
+              "kind": "conversation",
+              "ref": "session-0001",
+              "agent": "amp:key:FAe4sisG95oZ42w7buUn5qEE4TAnfTTFPiguZUHmhiF"
+            },
+            "evidence": [],
+            "supersedes": null,
+            "superseded_by": null,
+            "transition": null,
+            "state_reason": null,
+            "tags": [],
+            "flagged": false,
+            "flag_reason": null,
+            "signed_by": null,
+            "signature": ""
+          },
+          {
+            "id": "mem:6de15d17ea95c840822c5ef72e86d7e9",
+            "type": "rule",
+            "body": "Always review the vector diff after a wire-format change.",
+            "slots": {},
+            "state": "active",
+            "confidence": "0.8000",
+            "created_at": "2026-01-01T00:00:00.000Z",
+            "updated_at": "2026-01-01T00:00:00.000Z",
+            "provenance": {
+              "kind": "conversation",
+              "ref": "session-0001",
+              "agent": "amp:key:FAe4sisG95oZ42w7buUn5qEE4TAnfTTFPiguZUHmhiF"
+            },
+            "evidence": [
+              "mem:a2ba09c33f5389fd45f6a2104b694d77",
+              "mem:9e3ca918de8c6a4fa86761a313a1c356"
+            ],
+            "supersedes": null,
+            "superseded_by": null,
+            "transition": null,
+            "state_reason": null,
+            "tags": [],
+            "flagged": false,
+            "flag_reason": null,
+            "signed_by": null,
+            "signature": ""
+          }
+        ]
+      },
+      "signing_input_hex": "001e66672d6167656e742d6d656d6f72792f76312f6d656d6f72792d66696c657b226167656e74223a22616d703a6b65793a464165347369734739356f5a343277376275556e357145453454416e66545446506967755a55486d686946222c22637265617465645f6174223a22323032362d30312d30315430303a30303a30302e3030305a222c22666f726d6174223a2266672d6167656e742d6d656d6f72792f302e31222c227265636f726473223a5b7b22626f6479223a2254686520636f6e666f726d616e63652073756974652072756e73206f6e2066697865642073656564732e222c22636f6e666964656e6365223a22302e39303030222c22637265617465645f6174223a22323032362d30312d30315430303a30303a30302e3030305a222c2265766964656e6365223a5b5d2c22666c61675f726561736f6e223a6e756c6c2c22666c6167676564223a66616c73652c226964223a226d656d3a6132626130396333336635333839666434356636613231303462363934643737222c2270726f76656e616e6365223a7b226167656e74223a22616d703a6b65793a464165347369734739356f5a343277376275556e357145453454416e66545446506967755a55486d686946222c226b696e64223a22636f6e766572736174696f6e222c22726566223a2273657373696f6e2d30303031227d2c227369676e6174757265223a22222c227369676e65645f6279223a6e756c6c2c22736c6f7473223a7b22707265646963617465223a2272756e73206f6e206669786564207365656473222c227375626a656374223a22636f6e666f726d616e6365207375697465227d2c227374617465223a22616374697665222c2273746174655f726561736f6e223a6e756c6c2c22737570657273656465645f6279223a6e756c6c2c2273757065727365646573223a6e756c6c2c2274616773223a5b22636f6e666f726d616e6365225d2c227472616e736974696f6e223a6e756c6c2c2274797065223a2266616374222c22757064617465645f6174223a22323032362d30312d30315430303a30303a30302e3030305a227d2c7b22626f6479223a2252616e2074686520766563746f722067656e657261746f7220616e642072657669657765642074686520646966662e222c22636f6e666964656e6365223a22302e37353030222c22637265617465645f6174223a22323032362d30312d30315430303a30303a30302e3030305a222c2265766964656e6365223a5b5d2c22666c61675f726561736f6e223a6e756c6c2c22666c6167676564223a66616c73652c226964223a226d656d3a3965336361393138646538633661346661383637363161333133613163333536222c2270726f76656e616e6365223a7b226167656e74223a22616d703a6b65793a464165347369734739356f5a343277376275556e357145453454416e66545446506967755a55486d686946222c226b696e64223a22636f6e766572736174696f6e222c22726566223a2273657373696f6e2d30303031227d2c227369676e6174757265223a22222c227369676e65645f6279223a6e756c6c2c22736c6f7473223a7b7d2c227374617465223a22616374697665222c2273746174655f726561736f6e223a6e756c6c2c22737570657273656465645f6279223a6e756c6c2c2273757065727365646573223a6e756c6c2c2274616773223a5b5d2c227472616e736974696f6e223a6e756c6c2c2274797065223a22657069736f6465222c22757064617465645f6174223a22323032362d30312d30315430303a30303a30302e3030305a227d2c7b22626f6479223a22416c77617973207265766965772074686520766563746f722064696666206166746572206120776972652d666f726d6174206368616e67652e222c22636f6e666964656e6365223a22302e38303030222c22637265617465645f6174223a22323032362d30312d30315430303a30303a30302e3030305a222c2265766964656e6365223a5b226d656d3a6132626130396333336635333839666434356636613231303462363934643737222c226d656d3a3965336361393138646538633661346661383637363161333133613163333536225d2c22666c61675f726561736f6e223a6e756c6c2c22666c6167676564223a66616c73652c226964223a226d656d3a3664653135643137656139356338343038323263356566373265383664376539222c2270726f76656e616e6365223a7b226167656e74223a22616d703a6b65793a464165347369734739356f5a343277376275556e357145453454416e66545446506967755a55486d686946222c226b696e64223a22636f6e766572736174696f6e222c22726566223a2273657373696f6e2d30303031227d2c227369676e6174757265223a22222c227369676e65645f6279223a6e756c6c2c22736c6f7473223a7b7d2c227374617465223a22616374697665222c2273746174655f726561736f6e223a6e756c6c2c22737570657273656465645f6279223a6e756c6c2c2273757065727365646573223a6e756c6c2c2274616773223a5b5d2c227472616e736974696f6e223a6e756c6c2c2274797065223a2272756c65222c22757064617465645f6174223a22323032362d30312d30315430303a30303a30302e3030305a227d5d7d",
+      "signature_b64": "MvTAoIyxvbFt/EsbxvxvDz2AN8rsetQN3+UmDbOWOw0lffk6KGB8xSQ6rcU1atJyehpvM4giGJ0La5wh4k42Dg==",
+      "file": {
+        "format": "fg-agent-memory/0.1",
+        "agent": "amp:key:FAe4sisG95oZ42w7buUn5qEE4TAnfTTFPiguZUHmhiF",
+        "created_at": "2026-01-01T00:00:00.000Z",
+        "records": [
+          {
+            "id": "mem:a2ba09c33f5389fd45f6a2104b694d77",
+            "type": "fact",
+            "body": "The conformance suite runs on fixed seeds.",
+            "slots": {
+              "subject": "conformance suite",
+              "predicate": "runs on fixed seeds"
+            },
+            "state": "active",
+            "confidence": "0.9000",
+            "created_at": "2026-01-01T00:00:00.000Z",
+            "updated_at": "2026-01-01T00:00:00.000Z",
+            "provenance": {
+              "kind": "conversation",
+              "ref": "session-0001",
+              "agent": "amp:key:FAe4sisG95oZ42w7buUn5qEE4TAnfTTFPiguZUHmhiF"
+            },
+            "evidence": [],
+            "supersedes": null,
+            "superseded_by": null,
+            "transition": null,
+            "state_reason": null,
+            "tags": [
+              "conformance"
+            ],
+            "flagged": false,
+            "flag_reason": null,
+            "signed_by": null,
+            "signature": ""
+          },
+          {
+            "id": "mem:9e3ca918de8c6a4fa86761a313a1c356",
+            "type": "episode",
+            "body": "Ran the vector generator and reviewed the diff.",
+            "slots": {},
+            "state": "active",
+            "confidence": "0.7500",
+            "created_at": "2026-01-01T00:00:00.000Z",
+            "updated_at": "2026-01-01T00:00:00.000Z",
+            "provenance": {
+              "kind": "conversation",
+              "ref": "session-0001",
+              "agent": "amp:key:FAe4sisG95oZ42w7buUn5qEE4TAnfTTFPiguZUHmhiF"
+            },
+            "evidence": [],
+            "supersedes": null,
+            "superseded_by": null,
+            "transition": null,
+            "state_reason": null,
+            "tags": [],
+            "flagged": false,
+            "flag_reason": null,
+            "signed_by": null,
+            "signature": ""
+          },
+          {
+            "id": "mem:6de15d17ea95c840822c5ef72e86d7e9",
+            "type": "rule",
+            "body": "Always review the vector diff after a wire-format change.",
+            "slots": {},
+            "state": "active",
+            "confidence": "0.8000",
+            "created_at": "2026-01-01T00:00:00.000Z",
+            "updated_at": "2026-01-01T00:00:00.000Z",
+            "provenance": {
+              "kind": "conversation",
+              "ref": "session-0001",
+              "agent": "amp:key:FAe4sisG95oZ42w7buUn5qEE4TAnfTTFPiguZUHmhiF"
+            },
+            "evidence": [
+              "mem:a2ba09c33f5389fd45f6a2104b694d77",
+              "mem:9e3ca918de8c6a4fa86761a313a1c356"
+            ],
+            "supersedes": null,
+            "superseded_by": null,
+            "transition": null,
+            "state_reason": null,
+            "tags": [],
+            "flagged": false,
+            "flag_reason": null,
+            "signed_by": null,
+            "signature": ""
+          }
+        ],
+        "signature": "MvTAoIyxvbFt/EsbxvxvDz2AN8rsetQN3+UmDbOWOw0lffk6KGB8xSQ6rcU1atJyehpvM4giGJ0La5wh4k42Dg=="
+      },
+      "canonical_bytes_hex": "7b226167656e74223a22616d703a6b65793a464165347369734739356f5a343277376275556e357145453454416e66545446506967755a55486d686946222c22637265617465645f6174223a22323032362d30312d30315430303a30303a30302e3030305a222c22666f726d6174223a2266672d6167656e742d6d656d6f72792f302e31222c227265636f726473223a5b7b22626f6479223a2254686520636f6e666f726d616e63652073756974652072756e73206f6e2066697865642073656564732e222c22636f6e666964656e6365223a22302e39303030222c22637265617465645f6174223a22323032362d30312d30315430303a30303a30302e3030305a222c2265766964656e6365223a5b5d2c22666c61675f726561736f6e223a6e756c6c2c22666c6167676564223a66616c73652c226964223a226d656d3a6132626130396333336635333839666434356636613231303462363934643737222c2270726f76656e616e6365223a7b226167656e74223a22616d703a6b65793a464165347369734739356f5a343277376275556e357145453454416e66545446506967755a55486d686946222c226b696e64223a22636f6e766572736174696f6e222c22726566223a2273657373696f6e2d30303031227d2c227369676e6174757265223a22222c227369676e65645f6279223a6e756c6c2c22736c6f7473223a7b22707265646963617465223a2272756e73206f6e206669786564207365656473222c227375626a656374223a22636f6e666f726d616e6365207375697465227d2c227374617465223a22616374697665222c2273746174655f726561736f6e223a6e756c6c2c22737570657273656465645f6279223a6e756c6c2c2273757065727365646573223a6e756c6c2c2274616773223a5b22636f6e666f726d616e6365225d2c227472616e736974696f6e223a6e756c6c2c2274797065223a2266616374222c22757064617465645f6174223a22323032362d30312d30315430303a30303a30302e3030305a227d2c7b22626f6479223a2252616e2074686520766563746f722067656e657261746f7220616e642072657669657765642074686520646966662e222c22636f6e666964656e6365223a22302e37353030222c22637265617465645f6174223a22323032362d30312d30315430303a30303a30302e3030305a222c2265766964656e6365223a5b5d2c22666c61675f726561736f6e223a6e756c6c2c22666c6167676564223a66616c73652c226964223a226d656d3a3965336361393138646538633661346661383637363161333133613163333536222c2270726f76656e616e6365223a7b226167656e74223a22616d703a6b65793a464165347369734739356f5a343277376275556e357145453454416e66545446506967755a55486d686946222c226b696e64223a22636f6e766572736174696f6e222c22726566223a2273657373696f6e2d30303031227d2c227369676e6174757265223a22222c227369676e65645f6279223a6e756c6c2c22736c6f7473223a7b7d2c227374617465223a22616374697665222c2273746174655f726561736f6e223a6e756c6c2c22737570657273656465645f6279223a6e756c6c2c2273757065727365646573223a6e756c6c2c2274616773223a5b5d2c227472616e736974696f6e223a6e756c6c2c2274797065223a22657069736f6465222c22757064617465645f6174223a22323032362d30312d30315430303a30303a30302e3030305a227d2c7b22626f6479223a22416c77617973207265766965772074686520766563746f722064696666206166746572206120776972652d666f726d6174206368616e67652e222c22636f6e666964656e6365223a22302e38303030222c22637265617465645f6174223a22323032362d30312d30315430303a30303a30302e3030305a222c2265766964656e6365223a5b226d656d3a6132626130396333336635333839666434356636613231303462363934643737222c226d656d3a3965336361393138646538633661346661383637363161333133613163333536225d2c22666c61675f726561736f6e223a6e756c6c2c22666c6167676564223a66616c73652c226964223a226d656d3a3664653135643137656139356338343038323263356566373265383664376539222c2270726f76656e616e6365223a7b226167656e74223a22616d703a6b65793a464165347369734739356f5a343277376275556e357145453454416e66545446506967755a55486d686946222c226b696e64223a22636f6e766572736174696f6e222c22726566223a2273657373696f6e2d30303031227d2c227369676e6174757265223a22222c227369676e65645f6279223a6e756c6c2c22736c6f7473223a7b7d2c227374617465223a22616374697665222c2273746174655f726561736f6e223a6e756c6c2c22737570657273656465645f6279223a6e756c6c2c2273757065727365646573223a6e756c6c2c2274616773223a5b5d2c227472616e736974696f6e223a6e756c6c2c2274797065223a2272756c65222c22757064617465645f6174223a22323032362d30312d30315430303a30303a30302e3030305a227d5d7d"
+    }
+  },
+  "lifecycle": {
+    "legality": [
+      {
+        "from": "active",
+        "to": "active",
+        "legal": false
+      },
+      {
+        "from": "active",
+        "to": "superseded",
+        "legal": true
+      },
+      {
+        "from": "active",
+        "to": "transitional",
+        "legal": true
+      },
+      {
+        "from": "active",
+        "to": "archived",
+        "legal": true
+      },
+      {
+        "from": "superseded",
+        "to": "active",
+        "legal": false
+      },
+      {
+        "from": "superseded",
+        "to": "superseded",
+        "legal": false
+      },
+      {
+        "from": "superseded",
+        "to": "transitional",
+        "legal": false
+      },
+      {
+        "from": "superseded",
+        "to": "archived",
+        "legal": true
+      },
+      {
+        "from": "transitional",
+        "to": "active",
+        "legal": true
+      },
+      {
+        "from": "transitional",
+        "to": "superseded",
+        "legal": true
+      },
+      {
+        "from": "transitional",
+        "to": "transitional",
+        "legal": false
+      },
+      {
+        "from": "transitional",
+        "to": "archived",
+        "legal": true
+      },
+      {
+        "from": "archived",
+        "to": "active",
+        "legal": false
+      },
+      {
+        "from": "archived",
+        "to": "superseded",
+        "legal": false
+      },
+      {
+        "from": "archived",
+        "to": "transitional",
+        "legal": false
+      },
+      {
+        "from": "archived",
+        "to": "archived",
+        "legal": false
+      }
+    ]
+  }
+}

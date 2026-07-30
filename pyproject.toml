@@ -1,0 +1,57 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "fg-agent-memory"
+version = "0.1.0"
+description = "Portable, signed agent memory: typed records, a code-enforced fact lifecycle, and storage-agnostic pipeline ports."
+readme = "README.md"
+requires-python = ">=3.11"
+keywords = ["ai", "agents", "memory", "consolidation", "lifecycle", "portable", "signed"]
+license = { text = "Apache-2.0" }
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    # The only runtime dependency: canonical JSON, keys, and address
+    # verification come from the sibling identity standard. Everything else
+    # is stdlib. Install editable from the sibling checkout during development:
+    #   pip install -e ../fg-agent-id -e ".[dev]"
+    "fg-agent-id",
+]
+
+[project.optional-dependencies]
+# The MCP stdio server (fg-agent-memory-mcp) needs the official MCP SDK;
+# the core library never imports it.
+mcp = [
+    "mcp>=1.0",
+]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.8",
+    "build>=1.0",
+]
+
+[project.scripts]
+fg-agent-memory-mcp = "fg_agent_memory.mcp_server:main"
+
+[project.urls]
+Repository = "https://github.com/Fareground/agent-memory"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/fg_agent_memory"]
+artifacts = ["src/fg_agent_memory/py.typed"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
