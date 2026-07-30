@@ -36,7 +36,8 @@ The package is distributed as `fg-agent-memory` (import path `fg_agent_memory`) 
 
 ```bash
 # straight from GitHub
-pip install git+https://github.com/Fareground/agent-memory.git
+pip install "fg-agent-id @ git+https://github.com/Fareground/agent-id.git" \
+            "fg-agent-memory @ git+https://github.com/Fareground/agent-memory.git"
 
 # development, from checkouts of this repo and the agent-id sibling
 python -m venv .venv
