@@ -35,7 +35,7 @@ mcp = [
 ]
 dev = [
     "pytest>=8.0",
-    "ruff>=0.8",
+    "ruff==0.16.1",
     "build>=1.0",
 ]
 

@@ -11,6 +11,7 @@
 <p align="center"><em>Portable, signed agent memory with a code-enforced fact lifecycle.</em></p>
 
 <p align="center">
+  <a href="https://github.com/Fareground/agent-memory/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/Fareground/agent-memory/ci.yml?branch=main&style=flat-square&label=CI" /></a>
   <img alt="Python" src="https://img.shields.io/badge/python-3.11+-3b82f6?style=flat-square" />
   <img alt="Status" src="https://img.shields.io/badge/status-alpha-f59e0b?style=flat-square" />
   <img alt="Tests" src="https://img.shields.io/badge/tests-229%20passing-2dd4a7?style=flat-square" />
