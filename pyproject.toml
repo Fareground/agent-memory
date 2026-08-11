@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "fg-agent-memory"
-version = "0.1.0"
+version = "0.2.0"
 description = "Portable, signed agent memory: typed records, a code-enforced fact lifecycle, and storage-agnostic pipeline ports."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -22,9 +22,12 @@ classifiers = [
 dependencies = [
     # The only runtime dependency: canonical JSON, keys, and address
     # verification come from the sibling identity standard. Everything else
-    # is stdlib. Install editable from the sibling checkout during development:
+    # is stdlib. The upper bound is deliberate: a few internal fg_agent_id
+    # submodule APIs are used (see the "internal-API dependency" comments in
+    # the source), so a new minor of fg-agent-id needs a deliberate bump here.
+    # Install editable from the sibling checkout during development:
     #   pip install -e ../fg-agent-id -e ".[dev]"
-    "fg-agent-id",
+    "fg-agent-id>=0.2,<0.3",
 ]
 
 [project.optional-dependencies]

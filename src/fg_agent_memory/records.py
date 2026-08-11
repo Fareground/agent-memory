@@ -26,6 +26,9 @@ from enum import StrEnum
 from typing import Any
 
 from fg_agent_id import KeyPair, canonical_json
+
+# Internal-API dependency: fg_agent_id.serde helpers are not re-exported at
+# the package root; the fg-agent-id version bound in pyproject pins them.
 from fg_agent_id.serde import (
     canonical_timestamp,
     parse_datetime,

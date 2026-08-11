@@ -19,8 +19,10 @@ from __future__ import annotations
 import base64
 from typing import Any
 
-from fg_agent_id import KeyPair, PublicKeys, canonical_json
-from fg_agent_id.address import signing_key_from_address
+from fg_agent_id import KeyPair, PublicKeys, canonical_json, signing_key_from_address
+
+# Internal-API dependency: decode_signature is not re-exported at the
+# fg_agent_id package root; the fg-agent-id version bound in pyproject pins it.
 from fg_agent_id.signing import decode_signature
 
 DOMAIN = "fg-agent-memory/v1"

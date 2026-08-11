@@ -19,6 +19,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import UTC, datetime
 
+# Internal-API dependency: fg_agent_id.serde helpers are not re-exported at
+# the package root; the fg-agent-id version bound in pyproject pins them.
 from fg_agent_id.serde import canonical_timestamp, parse_datetime
 
 from ..lifecycle import archive

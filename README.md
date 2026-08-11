@@ -14,7 +14,6 @@
   <a href="https://github.com/Fareground/agent-memory/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/Fareground/agent-memory/ci.yml?branch=main&style=flat-square&label=CI" /></a>
   <img alt="Python" src="https://img.shields.io/badge/python-3.11+-3b82f6?style=flat-square" />
   <img alt="Status" src="https://img.shields.io/badge/status-alpha-f59e0b?style=flat-square" />
-  <img alt="Tests" src="https://img.shields.io/badge/tests-229%20passing-2dd4a7?style=flat-square" />
 </p>
 
 ---
@@ -29,29 +28,30 @@ The standard is storage-agnostic by construction: `RecordStore`, `SearchIndex`, 
 
 ## Status
 
-**Alpha.** The library is functional end to end and covered by 229 passing tests, including the golden wire vectors. The wire format version is pinned at `0.1` and is expected to move before a `1.0` freeze — treat on-disk records and signatures as not yet stable across versions, and expect APIs to change. The package is not published to PyPI; install from GitHub (below). See [`CHANGELOG.md`](CHANGELOG.md) for the current state and recent changes.
+**Alpha.** The library is functional end to end, and the byte-level constructions are pinned by golden wire vectors. The wire format version is pinned at `0.1` and is expected to move before a `1.0` freeze — treat on-disk records and signatures as not yet stable across versions, and expect APIs to change. See [`CHANGELOG.md`](CHANGELOG.md) for the current state and recent changes.
 
 ## Install
 
-The package is distributed as `fg-agent-memory` (import path `fg_agent_memory`) and depends on the sibling [fg-agent-id](https://github.com/Fareground/agent-id) identity library.
+The package is distributed as `fg-agent-memory` (import path `fg_agent_memory`); its only dependency, the sibling [fg-agent-id](https://github.com/Fareground/agent-id) identity library, resolves automatically.
 
 ```bash
-# straight from GitHub
-pip install "fg-agent-id @ git+https://github.com/Fareground/agent-id.git" \
-            "fg-agent-memory @ git+https://github.com/Fareground/agent-memory.git"
-
-# development, from checkouts of this repo and the agent-id sibling
-python -m venv .venv
-.venv/bin/pip install -e ../agent-id -e ".[dev]"
+pip install fg-agent-memory
 
 # with the optional MCP stdio server
-.venv/bin/pip install -e ../agent-id -e ".[dev,mcp]"
+pip install "fg-agent-memory[mcp]"
 ```
 
-Run the tests to verify the install:
+> Until the first PyPI release lands, install straight from GitHub instead:
+> ```bash
+> pip install "fg-agent-id @ git+https://github.com/Fareground/agent-id.git" \
+>             "fg-agent-memory @ git+https://github.com/Fareground/agent-memory.git"
+> ```
+
+For development from checkouts of this repo and the agent-id sibling:
 
 ```bash
-.venv/bin/python -m pytest -q
+python -m venv .venv
+.venv/bin/pip install -e ../agent-id -e ".[dev]"
 ```
 
 ## Usage
@@ -99,7 +99,7 @@ print(memory.recall("staging database", include_history=True).as_prompt_block())
 # - The staging database is Postgres. [superseded — kept for history]
 ```
 
-This exact snippet runs as a test (`tests/test_ghost_memory_demo.py`). The default detector is deterministic negation-polarity matching over shared content words (it catches "X" vs "not X" and "no X needed" phrasings, morphology included); contradictions with no negation marker need an LLM operator plugged into the contradiction port.
+This exact snippet is executable as written. The default detector is deterministic negation-polarity matching over shared content words (it catches "X" vs "not X" and "no X needed" phrasings, morphology included); contradictions with no negation marker need an LLM operator plugged into the contradiction port.
 
 ### MCP server
 
@@ -140,9 +140,9 @@ The reference ships implementations for every port, so the whole framework runs 
 | `SearchIndex` | `SQLiteSearchIndex` (FTS5 keyword), `InMemorySearchIndex` (cosine over an `Embedder`) | vector DBs, hybrid search |
 | `Embedder` | `HashEmbedder` (deterministic, model-free) | any embedding model |
 | `Operator` (write) | `VerbatimExtractor` (porcelain default), `HeuristicExtractor` (regex) | LLM extractors |
-| `Operator` (consolidation) | `TrigramNearDupOperator`, `HeuristicContradictionOperator`, `HeuristicResolutionOperator` | LLM detectors / resolvers |
+| `Operator` (consolidation) | `TrigramNearDupOperator`, `HeuristicContradictionOperator`, `HeuristicResolutionOperator` | LLM detectors / resolvers — see [`examples/llm_operator.py`](examples/llm_operator.py) |
 
-All stores pass one shared port-contract test suite; conformance is the suite, not the backend.
+Every store implementation satisfies one shared port contract; conformance is the contract, not the backend.
 
 The wire format, lifecycle legality table, adapter contracts, retrieval scoring, and pipeline authority rules are normatively specified in [`spec/SPEC.md`](spec/SPEC.md) (RFC 2119); byte-level constructions are pinned by the golden vectors in [`spec/vectors.json`](spec/vectors.json). Where prose and code disagree, the vectors win.
 
@@ -157,7 +157,7 @@ The wire format, lifecycle legality table, adapter contracts, retrieval scoring,
 - `src/fg_agent_memory/pipeline/` — write stage, consolidation, decay
 - `src/fg_agent_memory/mcp_server.py` — the MCP stdio server (`[mcp]` extra)
 - `spec/SPEC.md` + `spec/vectors.json` — the wire spec and golden vectors
-- `tests/` — port-contract suite, lifecycle, signing, and the ghost-memory demo
+- `examples/` — the quickstart and an LLM consolidation operator skeleton
 
 ## Contributing
 

@@ -4,7 +4,22 @@ All notable changes to `fg-agent-memory`. Format loosely follows Keep a
 Changelog. The wire format version is tracked separately from the package
 version and remains `0.1` until the v1.0 freeze.
 
-## [Unreleased]
+## [0.2.0] — 2026-08-11
+
+### Release preparation (2026-08-10)
+
+- First PyPI-ready release: `.github/workflows/release.yml` (tag-driven
+  build, wheel smoke test, trusted publishing) and `SECURITY.md`.
+- `fg-agent-id` dependency pinned to `>=0.2,<0.3` — a few internal
+  fg_agent_id submodule helpers are used (marked at each import site), so
+  new minors need a deliberate bump.
+- `TrigramNearDupOperator`, `HeuristicContradictionOperator`, and
+  `HeuristicResolutionOperator` exported at the package root (they were
+  documented but only importable from `fg_agent_memory.pipeline`).
+- `examples/`: `quickstart.py` (the README hello world) and
+  `llm_operator.py` (a provider-agnostic LLM `ContradictionOperator` with
+  the full proposal plumbing real and the model call stubbed); both wired
+  into the test suite.
 
 ### Event time + redaction (2026-07-23)
 
