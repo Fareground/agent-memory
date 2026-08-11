@@ -21,6 +21,15 @@ version and remains `0.1` until the v1.0 freeze.
 - `TrigramNearDupOperator`, `HeuristicContradictionOperator`, and
   `HeuristicResolutionOperator` exported at the package root (they were
   documented but only importable from `fg_agent_memory.pipeline`).
+- `mcp` extra pinned to `>=1.0,<2` (mcp 2.0 removed `mcp.server.fastmcp`);
+  the server's import guard now distinguishes a missing SDK from an
+  incompatible one, and the `[dev]` extra installs mcp so the server tests
+  run in CI.
+- `ConsolidationOperators.near_dup` and `TrigramNearDupOperator.threshold`
+  gained the standard defaults, so plugging one custom operator in is a
+  one-field construction.
+- `fg_agent_memory.__version__` (from installed distribution metadata).
+- Corrupt record-file errors from `FileRecordStore` now name the remedy.
 - `examples/`: `quickstart.py` (the README hello world) and
   `llm_operator.py` (a provider-agnostic LLM `ContradictionOperator` with
   the full proposal plumbing real and the model call stubbed); both wired

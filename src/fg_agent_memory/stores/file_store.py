@@ -166,5 +166,8 @@ class FileRecordStore(RecordStore):
         try:
             data = json.loads(path.read_bytes())
         except (OSError, ValueError) as exc:
-            raise StoreError(f"unreadable record file {path}: {exc}") from exc
+            raise StoreError(
+                f"unreadable record file {path}: {exc} — restore the file "
+                "from backup, or remove this version file to drop the record"
+            ) from exc
         return MemoryRecord.model_validate(data)

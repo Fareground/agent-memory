@@ -193,7 +193,11 @@ class TestPortability:
         # Corrupt one record's signature while leaving its content address
         # intact; re-sign the file wrapper so only record verification can
         # catch it.
-        data["records"][0]["signature"] = "A" + data["records"][0]["signature"][1:]
+        original = data["records"][0]["signature"]
+        # Flip the first character to something it is not — "A" + rest would
+        # be a no-op whenever the real signature already starts with "A".
+        flipped = "B" if original[0] == "A" else "A"
+        data["records"][0]["signature"] = flipped + original[1:]
         tampered = MemoryFile.model_validate(data).sign(identity)
         artifact.write_bytes(canonical_json(tampered.model_dump()))
         with pytest.raises((RecordError, SignatureError)):

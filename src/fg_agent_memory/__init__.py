@@ -9,6 +9,9 @@ with fg-agent-id identities.
 
 from __future__ import annotations
 
+from importlib.metadata import PackageNotFoundError
+from importlib.metadata import version as _distribution_version
+
 from .errors import (
     AgentMemoryError,
     LifecycleError,
@@ -87,7 +90,13 @@ from .signing import (
 from .stores import FileRecordStore, SQLiteRecordStore, SQLiteSearchIndex
 from .version import FORMAT_VERSION
 
+try:
+    __version__ = _distribution_version("fg-agent-memory")
+except PackageNotFoundError:  # editable/source checkout without metadata
+    __version__ = "0.0.0+unknown"
+
 __all__ = [
+    "__version__",
     "CONTEXT_MEMORY_FILE",
     "CONTEXT_RECORD",
     "DOMAIN",

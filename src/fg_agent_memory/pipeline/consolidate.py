@@ -36,6 +36,10 @@ _KIND_CONSOLIDATION = "consolidation"
 # claim. SHOULD-level default per SPEC §9.2.
 _CORE_OVERLAP_THRESHOLD = 0.5
 
+# The de-facto standard near-dup similarity: one value shared by the config
+# default and the operator's own default, so bare constructions agree.
+DEFAULT_NEAR_DUP_THRESHOLD = 0.6
+
 
 @dataclass(frozen=True, kw_only=True)
 class ConsolidationConfig:
@@ -48,7 +52,7 @@ class ConsolidationConfig:
       a rule is proposed.
     """
 
-    near_dup_threshold: float = 0.6
+    near_dup_threshold: float = DEFAULT_NEAR_DUP_THRESHOLD
     promotion_threshold: int = 3
 
 
@@ -157,7 +161,7 @@ class TrigramNearDupOperator(NearDupOperator):
     merging it away would be exactly the silent overwrite this standard
     forbids, so the contradiction pass gets it instead."""
 
-    def __init__(self, *, threshold: float) -> None:
+    def __init__(self, *, threshold: float = DEFAULT_NEAR_DUP_THRESHOLD) -> None:
         self._threshold = threshold
 
     def propose_merge(
@@ -262,9 +266,11 @@ class HeuristicResolutionOperator(ResolutionOperator):
 class ConsolidationOperators:
     """The operator ports one consolidation pass runs with. ``resolver`` is
     optional — without one, detected contradictions stay transitional until
-    an explicit :func:`resolve`."""
+    an explicit :func:`resolve`. ``near_dup`` defaults to the trigram
+    operator at the standard threshold, so wiring in a custom detector is a
+    one-field construction."""
 
-    near_dup: NearDupOperator
+    near_dup: NearDupOperator = field(default_factory=TrigramNearDupOperator)
     contradiction: ContradictionOperator
     resolver: ResolutionOperator | None = None
 

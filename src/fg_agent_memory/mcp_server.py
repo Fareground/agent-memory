@@ -13,6 +13,8 @@ Run directly, or register with an MCP client:
 from __future__ import annotations
 
 import argparse
+import importlib.util
+import warnings
 
 from .memory import Memory
 
@@ -21,17 +23,33 @@ try:  # pragma: no cover — exercised via the import-guard test
 except ImportError:  # pragma: no cover
     FastMCP = None  # type: ignore[assignment]
 
-_MISSING_MCP = (
-    "the MCP server requires the optional 'mcp' dependency; "
-    "install with: pip install fg-agent-memory[mcp]"
-)
+
+def _missing_mcp_message() -> str:
+    """Distinguish "mcp is not installed" from "mcp is installed but
+    incompatible" (mcp 2.0 removed ``mcp.server.fastmcp``) so the error
+    never tells users to install an extra they already have."""
+    try:
+        installed = importlib.util.find_spec("mcp") is not None
+        compatible = installed and importlib.util.find_spec("mcp.server.fastmcp") is not None
+    except (ImportError, ValueError):  # broken installation probes as absent
+        installed = compatible = False
+    if installed and not compatible:
+        return (
+            "the installed 'mcp' package is incompatible with this server "
+            "(mcp.server.fastmcp is unavailable — removed in mcp 2.0); "
+            "install a supported version with: pip install 'mcp>=1.0,<2'"
+        )
+    return (
+        "the MCP server requires the optional 'mcp' dependency; "
+        "install with: pip install fg-agent-memory[mcp]"
+    )
 
 
 def build_server(memory: Memory) -> FastMCP:
     """A FastMCP server wired to ``memory``. Raises ImportError without the
     ``mcp`` extra installed."""
     if FastMCP is None:
-        raise ImportError(_MISSING_MCP)
+        raise ImportError(_missing_mcp_message())
 
     server = FastMCP("fg-agent-memory")
 
@@ -109,6 +127,11 @@ def main(argv: list[str] | None = None) -> None:
         help="directory the memory lives in (default: ./memory)",
     )
     args = parser.parse_args(argv)
+    # mcp 1.x's pydantic-settings usage emits IncompleteFieldDefinitionWarning
+    # noise on startup; it is upstream and harmless on a stdio server.
+    warnings.filterwarnings(
+        "ignore", message=".*", module="pydantic_settings.*"
+    )
     server = build_server(Memory(args.path))
     server.run(transport="stdio")
 

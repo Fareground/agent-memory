@@ -19,8 +19,27 @@ from fg_agent_memory.memory import Memory
 def test_import_guard_when_mcp_is_absent(tmp_path: Path, monkeypatch) -> None:
     """The core package imports fine without the SDK; only building the
     server fails, with an actionable message. Runs everywhere."""
+    import importlib.util
+
     monkeypatch.setattr(mcp_server, "FastMCP", None)
+    monkeypatch.setattr(importlib.util, "find_spec", lambda name: None)
     with pytest.raises(ImportError, match=r"fg-agent-memory\[mcp\]"):
+        mcp_server.build_server(Memory(tmp_path / "memory"))
+
+
+def test_import_guard_when_mcp_is_incompatible(tmp_path: Path, monkeypatch) -> None:
+    """mcp installed but mcp.server.fastmcp gone (mcp 2.x): the message must
+    say the version is wrong, not tell users to install the extra again."""
+    import importlib.util
+
+    fake_spec = object()
+    monkeypatch.setattr(mcp_server, "FastMCP", None)
+    monkeypatch.setattr(
+        importlib.util,
+        "find_spec",
+        lambda name: fake_spec if name == "mcp" else None,
+    )
+    with pytest.raises(ImportError, match=r"mcp>=1\.0,<2"):
         mcp_server.build_server(Memory(tmp_path / "memory"))
 
 

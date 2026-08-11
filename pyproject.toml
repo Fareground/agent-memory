@@ -33,10 +33,13 @@ dependencies = [
 [project.optional-dependencies]
 # The MCP stdio server (fg-agent-memory-mcp) needs the official MCP SDK;
 # the core library never imports it.
+# <2 is deliberate: mcp 2.0 removed mcp.server.fastmcp, which the server
+# imports; bump only after porting to the 2.x server API.
 mcp = [
-    "mcp>=1.0",
+    "mcp>=1.0,<2",
 ]
 dev = [
+    "mcp>=1.0,<2",
     "pytest>=8.0",
     "ruff==0.16.1",
     "build>=1.0",

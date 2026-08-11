@@ -20,7 +20,6 @@ from fg_agent_memory import (
     ProposalKind,
     Provenance,
     RecordType,
-    TrigramNearDupOperator,
 )
 
 _EXAMPLES = Path(__file__).parent.parent / "examples"
@@ -105,7 +104,6 @@ class TestLLMOperatorPlumbing:
         """The operator's proposal survives pipeline validation: both sides
         of the dispute surface in recall, neither is dropped."""
         operators = ConsolidationOperators(
-            near_dup=TrigramNearDupOperator(threshold=0.9),
             contradiction=llm_operator.LLMContradictionOperator(
                 lambda _: '{"contradiction": true, "reason": "model says so"}'
             ),

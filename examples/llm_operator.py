@@ -101,3 +101,13 @@ class LLMContradictionOperator(ContradictionOperator):
         if not isinstance(reason, str) or not reason.strip():
             return None  # a dispute without a reason is not actionable
         return (True, reason.strip())
+
+
+# Wiring it into Memory — the near-dup pass keeps its default operator, the
+# contradiction port becomes the model:
+#
+#     from fg_agent_memory import ConsolidationOperators, Memory
+#
+#     operators = ConsolidationOperators(contradiction=LLMContradictionOperator())
+#     memory = Memory("./memory", operators=operators)
+#     memory.consolidate()  # LLM verdicts, validated by the lifecycle machine
