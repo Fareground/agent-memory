@@ -237,3 +237,28 @@ class TestDedupScaling:
         # The transitional record is no longer live truth; remembering the
         # same text again must not silently dedup against it.
         assert not result.deduped
+
+
+class TestKeyfileIdentity:
+    """``identity="agent.key"`` — string/Path keyfile convenience."""
+
+    def test_string_path_creates_keyfile_and_signs(self, tmp_path: Path) -> None:
+        keyfile = tmp_path / "agent.key"
+        memory = Memory(tmp_path / "memory", identity=str(keyfile))
+        assert keyfile.exists()
+
+        memory.remember("Signed on first run.")
+        exported = memory.export(tmp_path / "brain.json")
+        assert exported.signature and exported.agent
+        exported.verify()
+
+    def test_same_keyfile_yields_same_agent_address(self, tmp_path: Path) -> None:
+        keyfile = tmp_path / "agent.key"
+        first = Memory(tmp_path / "m1", identity=keyfile)
+        second = Memory(tmp_path / "m2", identity=keyfile)
+
+        first.remember("One agent.")
+        second.remember("Two directories.")
+        a = first.export(tmp_path / "a.json")
+        b = second.export(tmp_path / "b.json")
+        assert a.agent == b.agent

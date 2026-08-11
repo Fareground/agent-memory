@@ -30,7 +30,12 @@ from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
 
-from fg_agent_id import KeyPair, address_from_signing_key, canonical_json
+from fg_agent_id import (
+    KeyPair,
+    address_from_signing_key,
+    canonical_json,
+    load_or_create_keys,
+)
 
 from .errors import AgentMemoryError, RecordError, StoreError
 from .pipeline import (
@@ -204,7 +209,11 @@ class Memory:
         **no auto-resolver** — contradictions stay visible until
         :meth:`resolve`.
     :param identity: fg-agent-id keypair; when present, every remembered
-        record and every export is signed.
+        record and every export is signed. A ``str`` or :class:`Path` is
+        treated as a keyfile path and resolved with fg-agent-id's
+        ``load_or_create_keys`` — the file is created on first run, so
+        ``Memory("./memory", identity="agent.key")`` is a complete
+        persistent-identity setup.
     :param auto_consolidate: Run a consolidation pass automatically every
         ``auto_consolidate_every`` remembers (default on).
     """
@@ -219,7 +228,7 @@ class Memory:
         operators: ConsolidationOperators | None = None,
         consolidation_config: ConsolidationConfig | None = None,
         decay_config: DecayConfig | None = None,
-        identity: KeyPair | None = None,
+        identity: KeyPair | str | Path | None = None,
         source_kind: str = "conversation",
         auto_consolidate: bool = True,
         auto_consolidate_every: int = DEFAULT_AUTO_CONSOLIDATE_EVERY,
@@ -248,6 +257,8 @@ class Memory:
         else:
             self._indexes = (InMemorySearchIndex(),)
 
+        if isinstance(identity, (str, Path)):
+            identity = load_or_create_keys(identity)
         self._identity = identity
         self._address = (
             address_from_signing_key(identity.public.signing) if identity else None

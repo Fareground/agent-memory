@@ -8,6 +8,11 @@ version and remains `0.1` until the v1.0 freeze.
 
 ### Release preparation (2026-08-10)
 
+- `Memory(identity=...)` now also accepts a keyfile path (`str`/`Path`),
+  resolved with fg-agent-id's `load_or_create_keys` — created on first
+  run, reloaded after — so `Memory("./memory", identity="agent.key")` is
+  a complete persistent signed-memory setup. A `KeyPair` still works
+  unchanged.
 - First PyPI-ready release: `.github/workflows/release.yml` (tag-driven
   build, wheel smoke test, trusted publishing) and `SECURITY.md`.
 - `fg-agent-id` dependency pinned to `>=0.2,<0.3` — a few internal

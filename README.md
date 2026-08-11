@@ -66,7 +66,15 @@ memory.remember("Sandro's favorite editor is Zed.")
 print(memory.recall("what editor does Sandro use?").as_prompt_block())
 ```
 
-Under the hood that was: a canonical-JSON record directory (`FileRecordStore`), a SQLite FTS index sidecar, content-address dedup, and auto-consolidation every few remembers. All of it is swappable — `Memory(store=..., indexes=..., extractor=..., operators=..., identity=keypair)` — none of it is required.
+Under the hood that was: a canonical-JSON record directory (`FileRecordStore`), a SQLite FTS index sidecar, content-address dedup, and auto-consolidation every few remembers. All of it is swappable — `Memory(store=..., indexes=..., extractor=..., operators=..., identity=...)` — none of it is required.
+
+Want every record and export signed by a persistent [fg-agent-id](https://github.com/Fareground/agent-id) identity? Pass a keyfile path — it is created on first run and reloaded ever after:
+
+```python
+memory = Memory("./memory", identity="agent.key")
+```
+
+(An existing `KeyPair` works too; the string form is `load_or_create_keys` under the hood.)
 
 ### The ghost-memory demo
 
