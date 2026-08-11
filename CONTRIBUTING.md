@@ -5,17 +5,16 @@ local setup, tests, and the conventions the codebase follows.
 
 ## Development setup
 
-The package depends on the sibling [fg-agent-id](https://github.com/Fareground/agent-id)
-identity library. Check it out next to this repository, then install both
-editable into a virtual environment:
-
 ```bash
 python -m venv .venv
-.venv/bin/pip install -e ../fg-agent-id -e ".[dev]"
+.venv/bin/pip install -e ".[dev]"
 
 # add the MCP server extra if you are working on the stdio server
-.venv/bin/pip install -e ../fg-agent-id -e ".[dev,mcp]"
+.venv/bin/pip install -e ".[dev,mcp]"
 ```
+
+The [fg-agent-id](https://github.com/Fareground/agent-id) dependency resolves
+from PyPI automatically.
 
 Requires Python 3.11 or newer.
 

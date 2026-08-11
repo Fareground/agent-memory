@@ -13,7 +13,7 @@
 <p align="center">
   <a href="https://github.com/Fareground/agent-memory/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/Fareground/agent-memory/ci.yml?branch=main&style=flat-square&label=CI" /></a>
   <img alt="Python" src="https://img.shields.io/badge/python-3.11+-3b82f6?style=flat-square" />
-  <img alt="Status" src="https://img.shields.io/badge/status-alpha-f59e0b?style=flat-square" />
+  <a href="https://pypi.org/project/fg-agent-memory/"><img alt="PyPI" src="https://img.shields.io/pypi/v/fg-agent-memory?style=flat-square" /></a>
 </p>
 
 ---
@@ -41,17 +41,11 @@ pip install fg-agent-memory
 pip install "fg-agent-memory[mcp]"
 ```
 
-> Until the first PyPI release lands, install straight from GitHub instead:
-> ```bash
-> pip install "fg-agent-id @ git+https://github.com/Fareground/agent-id.git" \
->             "fg-agent-memory @ git+https://github.com/Fareground/agent-memory.git"
-> ```
-
-For development from checkouts of this repo and the agent-id sibling:
+For development from a checkout of this repo:
 
 ```bash
 python -m venv .venv
-.venv/bin/pip install -e ../agent-id -e ".[dev]"
+.venv/bin/pip install -e ".[dev]"
 ```
 
 ## Usage
@@ -111,7 +105,7 @@ This exact snippet is executable as written. The default detector is determinist
 
 ### MCP server
 
-Any MCP client gets `remember` / `recall` / `consolidate` / `status` tools over one memory directory (requires the `[mcp]` extra):
+Any MCP client gets `remember` / `recall` / `consolidate` / `redact` / `status` tools over one memory directory (requires the `[mcp]` extra):
 
 ```bash
 fg-agent-memory-mcp --path ~/agent-memory
