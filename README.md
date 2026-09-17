@@ -14,6 +14,7 @@
   <a href="https://github.com/Fareground/agent-memory/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/Fareground/agent-memory/ci.yml?branch=main&style=flat-square&label=CI" /></a>
   <img alt="Python" src="https://img.shields.io/badge/python-3.11+-3b82f6?style=flat-square" />
   <a href="https://pypi.org/project/fg-agent-memory/"><img alt="PyPI" src="https://img.shields.io/pypi/v/fg-agent-memory?style=flat-square" /></a>
+  <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-Apache--2.0-lightgrey?style=flat-square" /></a>
 </p>
 
 ---
@@ -25,6 +26,12 @@
 The differentiator is **consolidation as code, not vibes**. Most memory systems implement contradiction resolution, promotion, and decay as an LLM freely rewriting a store. Here the fact lifecycle is a deterministic state machine: superseding must name its successor and reason, contradiction produces a transition pair instead of a silent overwrite, rules keep machine-readable evidence links and are flagged the moment their evidence is invalidated, and archival is a terminal state — records are never deleted. The LLM is an operator *inside* the pipeline whose typed proposals are validated against the machine before anything is written; it is never a free rewriter.
 
 The standard is storage-agnostic by construction: `RecordStore`, `SearchIndex`, `Embedder`, and `Operator` are adapter ports, every invariant is stateable over the record format alone, and the reference ships in-memory implementations plus a deterministic hash embedder and model-free operators so the whole framework runs and tests with no model and no backend.
+
+Use this package for one agent's durable experience: facts, episodes,
+procedures, rules, retrieval, contradiction handling, and portable export. Use
+[`agent-knowledge`](https://github.com/Fareground/agent-knowledge) when several
+agents need governed, attributed knowledge that can be proposed, reviewed, and
+challenged. Memory is owned by an agent; knowledge is shared by a group.
 
 ## Status
 
@@ -164,6 +171,11 @@ The wire format, lifecycle legality table, adapter contracts, retrieval scoring,
 ## Contributing
 
 Development setup, test commands, and style conventions are in [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## License
+
+Apache License 2.0. See [LICENSE](LICENSE) for the full terms. Report
+vulnerabilities through [SECURITY.md](SECURITY.md), not a public issue.
 
 ---
 

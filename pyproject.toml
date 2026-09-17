@@ -49,7 +49,11 @@ dev = [
 fg-agent-memory-mcp = "fg_agent_memory.mcp_server:main"
 
 [project.urls]
+Homepage = "https://github.com/Fareground/agent-memory"
 Repository = "https://github.com/Fareground/agent-memory"
+Documentation = "https://github.com/Fareground/agent-memory/blob/main/README.md"
+Changelog = "https://github.com/Fareground/agent-memory/blob/main/CHANGELOG.md"
+Issues = "https://github.com/Fareground/agent-memory/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/fg_agent_memory"]
